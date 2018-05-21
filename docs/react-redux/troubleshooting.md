@@ -1,6 +1,12 @@
 ## 排错
 
-开始之前，一定你已经学习 [Redux 排错](http://redux.js.org/docs/Troubleshooting.html)。
+开始之前，一定你已经学习 [Redux 排错](https://cn.redux.js.org/docs/Troubleshooting.html)。
+
+### 我收到以下警告：Accessing PropTypes via the main React package is deprecated. Use the prop-types package from npm instead.  
+
+这个 warning 会在你使用 react 15.5.* 的时候出现。基本上，现上它只是一个 warning， 但是在 React16 当中可能会导致你的应用崩溃。现在 PropTypes 应该从 'prop-types' 包中 import，而不是从 react 包中 import。
+
+更新到最新版本的 react-redux。
 
 ### View 不更新的问题
 
@@ -67,9 +73,9 @@ export default connect(mapStateToProps, null, null, {
 如果你有 context 的问题，
 
 1. [确保你没有引入多个 React 实例](https://medium.com/@dan_abramov/two-weird-tricks-that-fix-react-7cf9bbdef375) 到页面上。
-2. 确保你没有忘记将根组件包装进 [`<Provider>`](#provider-store)。
+2. 确保你没有忘记将根组件或者其他祖先组件包装进 [`<Provider>`](#provider-store)。
 3. 确保你运行的 React 和 React Redux 是最新版本。
 
 ### Invariant Violation：addComponentAsRefTo(...)：只有 ReactOwner 才有 refs。这通常意味着你在一个没有 owner 的组件中添加了 ref
 
-如果你在 web 中使用 React，就通常意味着你[引用了两遍 React](https://medium.com/@dan_abramov/two-weird-tricks-that-fix-react-7cf9bbdef375)。按照这个链接解决即可。
+如果你在 web 中使用 React，就通常意味着你[重复引用了 React](https://medium.com/@dan_abramov/two-weird-tricks-that-fix-react-7cf9bbdef375)。按照这个链接解决即可。
